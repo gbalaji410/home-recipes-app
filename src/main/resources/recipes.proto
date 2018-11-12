@@ -1,0 +1,32 @@
+syntax = "proto3";
+package recipes;
+option java_package = "com.gb.recipes";
+option java_outer_classname = "RecipeInformation";
+message Recipe {
+   int32 id = 1;
+   string name = 2;
+   int32 prep_time = 3;
+   int32 cook_time = 4;
+   int32 rating = 5;
+   repeated Ingredient ingredients = 6;
+   Cuisine cuisine = 7;
+   
+   message Ingredient {
+        string name = 1;
+        int32 quantity = 2;
+        IngredientMeasure measure = 3;
+    }
+    enum IngredientMeasure {
+    	EACH = 0;
+    	OUCES = 1;
+    	LBS = 2;
+    	GRAMS = 3;
+    	ML = 4; 
+    }
+    
+    enum Cuisine {
+    	SOUTH_INDIAN = 0;
+    	NORTH_INDIAN = 1; 
+    }
+    
+}
